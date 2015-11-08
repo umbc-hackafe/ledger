@@ -109,8 +109,8 @@ def main(args):
 
 def parse(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument("purchases")
-    parser.add_argument("payments")
+    parser.add_argument("--purchases", default="purchases.csv")
+    parser.add_argument("--payments", default="payments.csv")
 
     return parser.parse_args(args)
 
