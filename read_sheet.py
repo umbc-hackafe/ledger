@@ -35,8 +35,9 @@ class Transaction(object):
             self.amount = Decimal(row['Amount'].strip('$').replace(',', ''))
 
             self.lineitems = [
-                    ("(Expenses:{})".format(self.category),
+                    ("[Expenses:{}]".format(self.category),
                         "${}".format(self.amount)),
+                    ("[Assets:Bank]", "$-{}".format(self.amount)),
                     ("Liabilities:People:{}".format(self.purchaser),
                         "$-{}".format(self.amount))
                     ]
