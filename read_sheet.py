@@ -21,6 +21,10 @@ class Transaction(object):
             return
         self.date = datetime.datetime.strptime(row['Date'], '%Y-%m-%d')
 
+        # Discard transactions in the future
+        if datetime.datetime.today() < self.date:
+            return
+
         if kind == 'purchase':
             self.purchaser = row['Paid By']
             self.purchasees = row['Purchased For'].split(',')
