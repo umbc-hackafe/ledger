@@ -1,0 +1,7 @@
+Date,From,To,Amount,Balance
+3000-01-01,Alice,Current Totals (+Upcoming),,$-50.00
+3000-01-01,Bob,,,$0.00
+3000-01-01,Eve,,,$0.00
+3000-01-01,Oscar,,,$50.00
+2015-11-02,Bob,Alice,$50.00,$0.00
+2015-11-03,Eve,Alice,$50.00,$0.00
