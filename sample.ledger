@@ -1,17 +1,20 @@
+; HEADER CONTENT
+
 2015-11-01 Costco
-    [Expenses:Food]                         $200.00
-    [Assets:Bank]                           $-200.00
+    Expenses:Food                           $200.00
     Liabilities:People:Alice                $-200.00
-    Assets:People:Alice                     ($200.00 / 4)
-    Assets:People:Bob                       ($200.00 / 4)
-    Assets:People:Eve                       ($200.00 / 4)
-    Assets:People:Oscar                     ($200.00 / 4)
+    (Assets:People:Alice)                   ($200.00 / 4)
+    (Assets:People:Bob)                     ($200.00 / 4)
+    (Assets:People:Eve)                     ($200.00 / 4)
+    (Assets:People:Oscar)                   ($200.00 / 4)
 
 2015-11-02 Payment
     Liabilities:People:Alice                $50.00
-    Assets:People:Bob                       $-50.00
+    Income:People:Bob                       $-50.00
+    (Assets:People:Bob)                     $-50.00
 
 2015-11-03 Payment
     Liabilities:People:Alice                $50.00
-    Assets:People:Eve                       $-50.00
+    Income:People:Eve                       $-50.00
+    (Assets:People:Eve)                     $-50.00
 

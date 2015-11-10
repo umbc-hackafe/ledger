@@ -39,14 +39,13 @@ class Transaction(object):
             self.amount = Decimal(row['Amount'].strip('$').replace(',', ''))
 
             self.lineitems = [
-                    ("[Expenses:{}]".format(self.category),
+                    ("Expenses:{}".format(self.category),
                         "${}".format(self.amount)),
-                    ("[Assets:Bank]", "$-{}".format(self.amount)),
                     ("Liabilities:People:{}".format(self.purchaser),
                         "$-{}".format(self.amount))
                     ]
             self.lineitems.extend(
-                (("Assets:People:{}".format(purchasee),
+                (("(Assets:People:{})".format(purchasee),
                     "(${} / {})".format(self.amount, len(self.purchasees)))
                     for purchasee in self.purchasees)
                 )
@@ -62,8 +61,10 @@ class Transaction(object):
             self.lineitems = [
                     ("Liabilities:People:{}".format(self.payee),
                         '${}'.format(self.amount)),
-                    ("Assets:People:{}".format(self.payer),
-                        "$-{}".format(self.amount))
+                    ("Income:People:{}".format(self.payer),
+                        '${}'.format(-self.amount)),
+                    ("(Assets:People:{})".format(self.payer),
+                        "${}".format(-self.amount))
                     ]
             self.valid = True
 
