@@ -83,6 +83,12 @@ class Transaction(object):
 
 
 def main(args):
+    # Print the contents of the header file.
+    if args.header:
+        with open(args.header, 'r') as f:
+            for line in f:
+                print(line)
+
     # Read the purchases file
     with open(args.purchases, 'r') as f:
         # Discard the first two lines, which are garbage.
@@ -115,6 +121,7 @@ def parse(args):
     parser = argparse.ArgumentParser()
     parser.add_argument("--purchases", default="purchases.csv")
     parser.add_argument("--payments", default="payments.csv")
+    parser.add_argument("--header", default="header.ledger")
 
     return parser.parse_args(args)
 
