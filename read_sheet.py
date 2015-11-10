@@ -85,9 +85,14 @@ class Transaction(object):
 def main(args):
     # Print the contents of the header file.
     if args.header:
-        with open(args.header, 'r') as f:
-            for line in f:
-                print(line)
+        try:
+            with open(args.header, 'r') as f:
+                for line in f:
+                    print(line)
+        except FileNotFoundError:
+            print("Could not open header file, skipping: {}"
+                    .format(args.header),
+                    file = os.stderr)
 
     # Read the purchases file
     with open(args.purchases, 'r') as f:
