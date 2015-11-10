@@ -94,6 +94,8 @@ def main(args):
                     .format(args.header),
                     file = os.stderr)
 
+    ts = []
+
     # Read the purchases file
     with open(args.purchases, 'r') as f:
         # Discard the first two lines, which are garbage.
@@ -101,26 +103,20 @@ def main(args):
         next(f)
 
         # Read the transactions
-        ts = (Transaction(row, "purchase") for row in csv.DictReader(f))
-        for t in ts:
-            # Skip invalid transaction records
-            if not t.valid: continue
-
-            # Print the transaction and its ledger translation
-            print(t.ledger())
-            print()
+        ts.extend((Transaction(row, "purchase") for row in csv.DictReader(f)))
 
     # Read the payments file
     with open(args.payments, 'r') as f:
         # Read the transactions
-        ts = (Transaction(row, "payment") for row in csv.DictReader(f))
-        for t in ts:
-            # Skip invalid transaction records
-            if not t.valid: continue
+        ts.extend((Transaction(row, "payment") for row in csv.DictReader(f)))
 
-            # Print the transaction and its ledger translation
-            print(t.ledger())
-            print()
+    # Remove invalid transactions.
+    ts = filter(lambda t: t.valid, ts)
+
+    for t in sorted(ts, key=lambda t: t.date):
+        # Print the transaction and its ledger translation
+        print(t.ledger())
+        print()
 
 def parse(args):
     parser = argparse.ArgumentParser()
