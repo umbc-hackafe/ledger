@@ -89,7 +89,9 @@ def main(args):
         try:
             with open(args.header, 'r') as f:
                 for line in f:
-                    print(line)
+                    print(line, end='')
+            print()
+
         except FileNotFoundError:
             print("Could not open header file, skipping: {}"
                     .format(args.header),
