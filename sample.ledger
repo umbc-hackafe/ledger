@@ -8,13 +8,11 @@
     (Assets:People:Eve)                     ($200.00 / 4)
     (Assets:People:Oscar)                   ($200.00 / 4)
 
-2015-11-02 Payment
+2015-11-02 Alice
     Liabilities:People:Alice                $50.00
     Income:People:Bob                       $-50.00
-    (Assets:People:Bob)                     $-50.00
 
-2015-11-03 Payment
+2015-11-03 Alice
     Liabilities:People:Alice                $50.00
     Income:People:Eve                       $-50.00
-    (Assets:People:Eve)                     $-50.00
 
