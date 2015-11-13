@@ -15,9 +15,10 @@ read_sheet.py --purchases purchases.csv.sample \
 ```
 To create reports, try some of the following.
 ```
-ledger -f sample.ledger balance
-ledger -f sample.ledger balance Assets:People:Alice Liabilities:People:Alice
+ledger -f sample.ledger balance --real
+ledger -f sample.ledger balance Alice
 ledger -f sample.ledger register
+ledger -f sample.ledger register Expenses
 ```
 
 ## Producing Reports
@@ -28,7 +29,7 @@ useful ones are as follows.
 ### Show How Much Alice is Owed
 The value will be negative if she is owed money.
 ```
-ledger -f sample.ledger balance Assets:People:Alice Liabilities:People:Alice
+ledger -f sample.ledger balance Alice
 ```
 
 ### Show Purchase History

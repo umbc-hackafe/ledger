@@ -66,9 +66,7 @@ class Transaction(object):
                     ("Liabilities:People:{}".format(self.payee),
                         '${}'.format(self.amount)),
                     ("Income:People:{}".format(self.payer),
-                        '${}'.format(-self.amount)),
-                    ("(Assets:People:{})".format(self.payer),
-                        "${}".format(-self.amount))
+                        '${}'.format(-self.amount))
                     ]
             self.valid = True
 
