@@ -13,7 +13,7 @@ class Transaction(object):
             'F': 'Food',
             'H': 'Home'
     }
-    def __init__(self, row, kind):
+    def __init__(self, row, kind, allow_future=False, allow_empty=False):
         self.valid = False
 
         # Ensure that the transaction has a date.
@@ -22,12 +22,16 @@ class Transaction(object):
         self.date = datetime.datetime.strptime(row['Date'], '%Y-%m-%d')
 
         # Discard transactions in the future
-        if datetime.datetime.today() < self.date:
+        if not allow_future and datetime.datetime.today() < self.date:
             return
 
         if kind == 'purchase':
             self.purchaser = row['Paid By']
             self.purchasees = row['Purchased For'].split(',')
+
+            # Return if the purchaser or purchasee is empty
+            if not allow_empty and (not self.purchaser or not self.purchasees):
+                return
 
             # Ensure that the list of purchasees is not corrupt.
             if len(self.purchasees) != int(row['Split Over']):
