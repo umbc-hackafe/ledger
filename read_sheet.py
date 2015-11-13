@@ -126,10 +126,10 @@ def main(args):
 
 def parse(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--purchases", default="purchases.csv")
-    parser.add_argument("--payments", default="payments.csv")
+    parser.add_argument("--purchases", "--pu", "-p", default="purchases.csv")
+    parser.add_argument("--payments", "--pay", "--pa", "-P", default="payments.csv")
     parser.add_argument("--output", "-o", default=sys.stdout)
-    parser.add_argument("--header", default="header.ledger")
+    parser.add_argument("--header", "-H", default="header.ledger")
 
     return parser.parse_args(args)
 
